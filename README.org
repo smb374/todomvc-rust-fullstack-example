@@ -1,0 +1,12 @@
+
+* todomvc-rust-fullstack-example
+
+A example project demonstrating how to write a fullstack service by Rust using the TodoMVC template.
+
+** !!WARNING!!
+To use this repository, you must first set up a =postgresql= server on any host you can connect, with =trunk=, =diesel_cli=, and =cargo-make= installed.
+After that,
+1. Run =cd backend && diesel migration run=
+2. Edit =pub fn establish_connection()='s db location in =backend/src/lib/db/mod.rs=
+3. =cd .. && cargo make run=
+4. You're setup!
