@@ -5,7 +5,17 @@ A example project demonstrating how to write a fullstack service by Rust using t
 
 ** !!WARNING!!
 To use this repository, you must first set up a =postgresql= server on any host you can connect, with =trunk=, =diesel_cli=, and =cargo-make= installed.
+
+=diesel_cli= should be installed with =postgres= feature.
+
+For installation instruction:
+
+1. =trunk=: [[https://trunkrs.dev/#install]]
+2. =diesel= & =diesel=: [[https://diesel.rs/guides/getting-started.html]]
+3. =cargo-make=: [[https://github.com/sagiegurari/cargo-make#installation]]
+
 After that,
+
 1. Run =cd backend && diesel migration run=
 2. Edit =pub fn establish_connection()='s db location in =backend/src/lib/db/mod.rs=
 3. =cd .. && cargo make run=
