@@ -1,0 +1,24 @@
+[env]
+CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = true
+
+[tasks.run-server]
+workspace = false
+dependencies = [{ name = "start-server", path = "backend/" }]
+
+[tasks.run-server-release]
+workspace = false
+dependencies = [{ name = "start-server-release", path = "backend/" }]
+
+[tasks.member-dev]
+run_task = { name = "dev", fork = true }
+
+[tasks.member-release]
+run_task = { name = "release", fork = true }
+
+[tasks.run]
+workspace = false
+dependencies = ["member-dev", "run-server"]
+
+[tasks.run-release]
+workspace = false
+dependencies = ["member-release", "run-server-release"]

@@ -1,0 +1,26 @@
+[tasks.format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean", "--release"]
+
+[tasks.shared-dev]
+command = "cargo"
+args = ["build"]
+
+[tasks.shared-release]
+command = "cargo"
+args = ["build", "--release"]
+dependencies = ["clean"]
+
+[tasks.general]
+dependencies = ["format"]
+
+[tasks.dev]
+dependencies = ["general", "shared-dev"]
+
+[tasks.release]
+dependencies = ["general", "shared-release"]

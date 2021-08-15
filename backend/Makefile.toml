@@ -1,0 +1,42 @@
+[tasks.format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean", "--release"]
+
+[tasks.project-build]
+command = "cargo"
+args = ["build"]
+
+[tasks.project-release]
+command = "cargo"
+args = ["build", "--release"]
+dependencies = ["clean"]
+
+[tasks.remove-static]
+command = "rm"
+args = ["-vr", "./static/"]
+
+[tasks.copy-static]
+command = "cp"
+args = ["-vr", "../frontend/dist/", "./static/"]
+
+[tasks.general]
+dependencies = ["remove-static", "format", "copy-static"]
+
+[tasks.dev]
+dependencies = ["general", "project-build"]
+
+[tasks.release]
+dependencies = ["general", "project-release"]
+
+[tasks.start-server]
+command = "cargo"
+args = ["run"]
+
+[tasks.start-server-release]
+command = "cargo"
+args = ["run", "--release"]
